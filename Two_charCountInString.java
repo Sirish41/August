@@ -11,13 +11,6 @@ public class Two_charCountInString{
             else
                 hash++;
         }
-        if(star>hash){
-            System.out.println(1);
-        }
-        else if(star<hash){
-            System.out.println(-1);
-        }
-        else 
-            System.out.println(0);
+        System.out.println(star-hash);
     }
 }
