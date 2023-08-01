@@ -23,6 +23,7 @@ public class MinAndMax {
                 sMin=inp;
             }
         }
+        System.out.println("Least of all: "+min + "\nGreatest of all: "+ max);
         System.out.println("Second Least of all: "+sMin + "\nSecond Greatest of all: "+ sMax);
     }
 }
