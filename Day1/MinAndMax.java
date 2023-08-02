@@ -1,4 +1,3 @@
-package Day1;
 import java.util.Scanner;
 public class MinAndMax {
     public static void main(String args[]){
