@@ -5,6 +5,7 @@ public class Six_NthPrime {
     public static void main(String[] args) {
         Scanner scan=new Scanner(System.in);
         int num=scan.nextInt();
+        scan.close();
         int nthPrime=2, flag;
         for(int i=2; i<num; i++){
             flag=0;
