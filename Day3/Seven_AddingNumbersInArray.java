@@ -15,6 +15,7 @@ public class Seven_AddingNumbersInArray {
         for(int i=0; i<digit2; i++){
             b[arrSize-digit2+i]=scan.nextInt();
         }
+        scan.close();
         System.out.println();
         for(int i=arrSize-1; i>0; i--){
             if(result[i]+a[i]+b[i]/10>0){
