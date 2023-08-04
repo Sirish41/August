@@ -11,14 +11,15 @@ public class Four_ShiftingLetters{
             shifts[i]=scan.nextInt();
         }
         scan.close();
-        for(int i=0; i<len; i++){
-            for(int j=0; j<i+1; j++){
-                if((c[j]+shifts[i])>'z'){
-                    c[j]=(char)(97-1+shifts[i]);
-                }
-                else
-                    c[j]=(char)((c[j]+shifts[i]));
+        int sum=0;
+        for(int i=len-1; i>=0; i--){
+            sum+=shifts[i];
+            if((c[i]+sum)>'z'){
+                c[i]=(char)(97-1+sum);
             }
+            else
+                c[i]=(char)((c[i]+sum));
+
         }
         for(int i=0; i<c.length; i++){
             System.out.print(c[i]);
