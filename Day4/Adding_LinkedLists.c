@@ -34,6 +34,21 @@ N insr(N f, int b){
     temp->next=x;
     return f;
 }
+N insr1(N f, int b){
+    N x=get();
+    x->val=b; 
+    x->next=NULL;
+    if(f==NULL){
+        return x;
+    }
+    N temp=f;
+    while(temp->next!=NULL){
+        temp=temp->next;
+    }
+    printf("\n");
+    temp->next=x;
+    return x;
+}
 N rev(struct node* f)
 {
     N prev = NULL;
@@ -48,39 +63,22 @@ N rev(struct node* f)
     f = prev;
     return (f);
 }
-N sums(N res, N a, N b){
+N sums(N a, N b){
     if(a==NULL || b==NULL){
         return NULL;
     }
-    N one_ptr, two_ptr;
-    N sum, prev;
-    while(one_ptr!=NULL || two_ptr!=NULL){
-        int s=sum->val+one_ptr->val+two_ptr->val;
-        sum->val=s%10;
-        res=sum;
-        if(s/10>=0){
-            N carry;
-            carry->val+=1;
-            carry->next=NULL;
-            sum->next=carry;
-        }
-        one_ptr=one_ptr->next;
-        two_ptr=two_ptr->next;
-        sum->next=NULL;
+    N head=get();
+    int s=a->val + b->val;
+    head->val=s%10; head->next=NULL;
+    a=a->next; b=b->next;
+    N go=insr1(head, s/10);
+    while(a!=NULL){
+        s=go->val + a->val + b->val;
+        go->val= s%10; go->next=NULL;
+        go=insr1(head, s/10);
+        a=a->next; b=b->next;
     }
-    if(one_ptr==NULL){
-        while(two_ptr!=NULL){
-            res->val+=two_ptr->val;
-            two_ptr=two_ptr->next;
-        }
-    }
-    else if(two_ptr==NULL){
-        while(one_ptr!=NULL){
-            res->val+=one_ptr->val;
-            one_ptr=one_ptr->next;
-        }
-    }
-    return res;
+    return head;
 }
 N dis(N f){
     if(f==NULL){
@@ -117,14 +115,10 @@ int main(){
     }
     one=rev(one);
     two=rev(two);
-    res=sums(res, one, two);
-    rev(res);
+    one=dis(one);
+    two=dis(two);
+    res=sums(one, two);
+    res=rev(res);
     res=dis(res);
-    // dis(one);
-    // for(int i=0; i<n; i++){
-    //     two=add(two, scanf("%d", &n));
-    // }
-
-
     return 0;
 }
